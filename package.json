@@ -6,5 +6,9 @@
     "@hotwired/turbo-rails": "^8.0.4",
     "esbuild": "^0.20.2",
     "sass": "^1.72.0"
+  },
+  "scripts": {
+    "build": "esbuild app/javascript/* --bundle --outdir=app/assets/builds",
+    "build:css": "sass app/assets/stylesheets:app/assets/builds"
   }
 }
