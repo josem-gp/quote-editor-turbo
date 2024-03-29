@@ -9,6 +9,6 @@
   },
   "scripts": {
     "build": "esbuild app/javascript/application.js --bundle --outdir=app/assets/builds",
-    "build:css": "sass app/assets/stylesheets:app/assets/builds"
+    "build:css": "sass app/assets/stylesheets/application.sass.scss app/assets/builds/application.css"
   }
 }
