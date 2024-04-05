@@ -20,7 +20,7 @@ class QuotesTest < ApplicationSystemTestCase
     fill_in "Name", with: "Capybara quote"
 
     assert_selector "h1", text: "Quotes"
-    click_on "Create quote"
+    click_on "Submit"
 
     assert_selector "h1", text: "Quotes"
     assert_text "Capybara quote"
@@ -34,7 +34,7 @@ class QuotesTest < ApplicationSystemTestCase
     fill_in "Name", with: "Updated quote"
 
     assert_selector "h1", text: "Quotes"
-    click_on "Update quote"
+    click_on "Submit"
 
     assert_selector "h1", text: "Quotes"
     assert_text "Updated quote"
