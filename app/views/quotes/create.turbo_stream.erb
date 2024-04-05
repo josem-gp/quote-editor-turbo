@@ -1,0 +1,3 @@
+<%= turbo_stream.prepend "quotes", @quote %>
+<%# Clear the form with the following logic %>
+<%= turbo_stream.update Quote.new, "" %> 
