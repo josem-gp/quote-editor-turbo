@@ -35,7 +35,12 @@ class QuotesController < ApplicationController
 
   def destroy
     @quote.destroy
-    redirect_to quotes_path, notice: "Quote was successfully destroyed."
+    respond_to do |format|
+      format.html { redirect_to quotes_url, notice: "Quote was successfully destroyed." }
+      format.turbo_stream
+      # We can also just the following line and we wouldnt need the destroy.turbo_stream.erb file
+      # format.turbo_stream { render turbo_stream: turbo_stream.remove(@quote) }
+    end
   end
 
   private
