@@ -18,7 +18,7 @@ class QuotesController < ApplicationController
     if @quote.save
       respond_to do |format|
         format.html { redirect_to quotes_path, notice: "Quote was successfully created." }
-        format.turbo_stream
+        format.turbo_stream { flash.now[:notice] = "Quote was successfully created." }
       end  
     else
       render :new, status: :unprocessable_entity
@@ -30,7 +30,10 @@ class QuotesController < ApplicationController
 
   def update
     if @quote.update(quote_params)
-      redirect_to quotes_path, notice: "Quote was successfully updated."
+      respond_to do |format|
+        format.html { redirect_to quotes_path, notice: "Quote was successfully updated." }
+        format.turbo_stream { flash.now[:notice] = "Quote was successfully updated." }
+      end
     else
       render :edit, status: :unprocessable_entity
     end
@@ -40,7 +43,7 @@ class QuotesController < ApplicationController
     @quote.destroy
     respond_to do |format|
       format.html { redirect_to quotes_url, notice: "Quote was successfully destroyed." }
-      format.turbo_stream
+      format.turbo_stream { flash.now[:notice] = "Quote was successfully destroyed." }
       # We can also just the following line and we wouldnt need the destroy.turbo_stream.erb file
       # format.turbo_stream { render turbo_stream: turbo_stream.remove(@quote) }
     end
